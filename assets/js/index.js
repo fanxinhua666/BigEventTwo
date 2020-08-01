@@ -1,5 +1,22 @@
 $(function(){
     getUserInfo()
+     // 退出登录，2引入layer
+     var layer = layui.layer
+
+     $("#btnlogout").on("click", function(){
+         //3..0提示
+         layer.confirm('确定退出吗',{icon: 3,title: '提示'},function(index){
+             // console.log('ok')
+             // 0.关闭提示框
+             layer.close(index)
+             //1.清空本地存储中的token
+             localStorage.removeItem('token')
+             //2.重新跳转到登录页面
+             location.href = './login.html'
+             
+         })
+         
+     })
 })
 
 //获取用户的基本信息
